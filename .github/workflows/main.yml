@@ -12,8 +12,10 @@ jobs:
       run: sudo apt install -y build-essential flex bison libssl-dev libelf-dev bc
     - name: make
       run: make -j2 KCONFIG_CONFIG=Microsoft/config-wsl
-    - name: make modules
+    - name: install the modules directory
       run: sudo make modules_install
+    - name: install the kernel
+      run: sudo make install
     - uses: actions/upload-artifact@v2
       with:
         name: bzImage
