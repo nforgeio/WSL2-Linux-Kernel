@@ -16,7 +16,13 @@ jobs:
       run: sudo make modules_install
     - name: install the kernel
       run: sudo make install
+    - name: zip modules
+      run: tar -czf modules.tgz /lib/modules/`uname -r`
     - uses: actions/upload-artifact@v2
       with:
         name: bzImage
         path: arch/x86_64/boot/bzImage
+    - uses: actions/upload-artifact@v2
+      with:
+        name: modules.tgz
+        path: modules.tgz
