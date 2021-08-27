@@ -19,12 +19,14 @@ jobs:
     - name: install the modules directory
       run: sudo make modules_install
     - name: copy modules
-      run: cp -f /lib/modules/`uname -r`/modules.builtin modules.builtin
+      run: cp -f /lib/modules/`uname -r`/modules.builtin modules.builtin-neon-desktop-0
+    - name: copy kernel
+      run: cp -f arch/x86_64/boot/bzImage `make kernelversion`-neon-desktop-0
     - uses: actions/upload-artifact@v2
       with:
         name: ${{ steps.version.outputs.KERNEL }}-neon-desktop-0
-        path: arch/x86_64/boot/bzImage
+        path: ${{ steps.version.outputs.KERNEL }}-neon-desktop-0
     - uses: actions/upload-artifact@v2
       with:
         name: modules.builtin-neon-desktop-0
-        path: modules.builtin
+        path: modules.builtin-neon-desktop-0
