@@ -26,5 +26,5 @@ jobs:
         path: arch/x86_64/boot/bzImage
     - uses: actions/upload-artifact@v2
       with:
-        name: modules.builtin
+        name: modules.builtin-neon-desktop-0
         path: modules.builtin
